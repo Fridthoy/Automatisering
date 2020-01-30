@@ -1,0 +1,72 @@
+
+#Template with constraints in KF
+#! NX/KF 4.0
+DefClass: My_Table_ (ug_base_part);
+    #Side parameter
+    (number parameter) leg_length: <PARAM1>;
+	(number parameter) leg_length_min: <PARAM1_min>;
+	(number parameter) leg_length_max: <PARAM1_max>;
+	(number parameter) leg_side: <PARAM2>;
+	(number parameter) leg_side_min: <PARAM2_min>;
+	(number parameter) leg_side_max: <PARAM2_max>;
+	(number parameter) top_lenght: <PARAM3>;
+	(number parameter) top_lenght_min: <PARAM3_min>;
+	(number parameter) top_lenght_max: <PARAM3_max>;
+	(number parameter) top_width: <PARAM4>;
+	(number parameter) top_width_min: <PARAM4_min>;
+	(number parameter) top_width_max: <PARAM4_max>;
+	(number parameter) top_height: <PARAM5>;
+	(number parameter) top_height_min: <PARAM5_min>;
+	(number parameter) top_height_max: <PARAM5_max>;
+	
+	
+(child) leg1: 
+    {
+        class, ug_block;
+        length, leg_side:;
+        width, leg_side:;
+        height, leg_length:;
+		Origin, Point(0,0,0);
+        color, 3;
+    };
+	
+(child) leg2: 
+    {
+        class, ug_block;
+        length, leg_side:;
+        width, leg_side:;
+        height, leg_length:;
+		Origin, Point(0,top_width:-leg_side:,0);
+        color, 3;
+    };
+	
+(child) leg3: 
+    {
+        class, ug_block;
+        length, leg_side:;
+        width, leg_side:;
+        height, leg_length:;
+		Origin, Point(top_lenght:-leg_side:,0,0);
+        color, 3;
+    };
+
+(child) leg4: 
+    {
+        class, ug_block;
+        length, leg_side:;
+        width, leg_side:;
+        height, leg_length:;
+		Origin, Point(top_lenght:-leg_side:,top_width:-leg_side:,0);
+        color, 3;
+    };
+	
+(child) top: 
+    {
+        class, ug_block;
+        length, top_lenght:;
+        width, top_width:;
+        height, top_height:;
+		Origin, Point(0,0,leg_length:);
+        color, 3;
+    };
+
